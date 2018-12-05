@@ -4,14 +4,13 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 01:47
+ * Time: 01:47.
  */
 
 namespace Getnet\API;
 
 /**
- * Class Credit
- * @package Getnet\API
+ * Class Credit.
  */
 class Credit implements \JsonSerializable
 {
@@ -62,6 +61,7 @@ class Credit implements \JsonSerializable
 
     /**
      * Credit constructor.
+     *
      * @param $pre_authorization
      */
     public function __construct($pre_authorization)
@@ -95,6 +95,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param $card
+     *
      * @return Card
      */
     public function Card($card)
@@ -115,6 +116,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $transaction_type
+     *
      * @return Credit
      */
     public function setTransactionType($transaction_type)
@@ -134,6 +136,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $authenticated
+     *
      * @return Credit
      */
     public function setAuthenticated($authenticated)
@@ -153,6 +156,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $delayed
+     *
      * @return Credit
      */
     public function setDelayed($delayed)
@@ -172,6 +176,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $dynamic_mcc
+     *
      * @return Credit
      */
     public function setDynamicMcc($dynamic_mcc)
@@ -191,6 +196,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $number_installments
+     *
      * @return Credit
      */
     public function setNumberInstallments($number_installments)
@@ -210,6 +216,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $pre_authorization
+     *
      * @return Credit
      */
     public function setPreAuthorization($pre_authorization)
@@ -229,6 +236,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $save_card_data
+     *
      * @return Credit
      */
     public function setSaveCardData($save_card_data)
@@ -248,6 +256,7 @@ class Credit implements \JsonSerializable
 
     /**
      * @param mixed $soft_descriptor
+     *
      * @return Credit
      */
     public function setSoftDescriptor($soft_descriptor)

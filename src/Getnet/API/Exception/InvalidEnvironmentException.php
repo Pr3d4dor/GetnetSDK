@@ -12,7 +12,7 @@
 namespace Getnet\API\Exception;
 
 /**
- * InvalidEnvironmentException
+ * InvalidEnvironmentException.
  *
  * @author Gianluca Bine <gian_bine@hotmail.com>
  */

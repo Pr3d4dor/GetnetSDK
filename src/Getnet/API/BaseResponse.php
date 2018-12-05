@@ -4,14 +4,13 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 20:16
+ * Time: 20:16.
  */
 
 namespace Getnet\API;
 
 /**
- * Class BaseResponse
- * @package Getnet\API
+ * Class BaseResponse.
  */
 class BaseResponse implements \JsonSerializable
 {
@@ -98,6 +97,7 @@ class BaseResponse implements \JsonSerializable
 
     /**
      * @param mixed $error_message
+     *
      * @return BaseResponse
      */
     public function setErrorMessage($error_message)
@@ -117,6 +117,7 @@ class BaseResponse implements \JsonSerializable
 
     /**
      * @param mixed $status_code
+     *
      * @return BaseResponse
      */
     public function setStatusCode($status_code)
@@ -136,6 +137,7 @@ class BaseResponse implements \JsonSerializable
 
     /**
      * @param mixed $description_detail
+     *
      * @return BaseResponse
      */
     public function setDescriptionDetail($description_detail)
@@ -150,11 +152,12 @@ class BaseResponse implements \JsonSerializable
      */
     public function getErrorDescription()
     {
-        return $this->description . "\n";
+        return $this->description."\n";
     }
 
     /**
      * @param mixed $description
+     *
      * @return BaseResponse
      */
     public function setErrorDescription($description)
@@ -249,23 +252,24 @@ class BaseResponse implements \JsonSerializable
      */
     public function getStatus()
     {
-        if ($this->status_code == 201) {
-            $this->status = "AUTHORIZED";
-        } elseif ($this->status_code == 202) {
-            $this->status = "AUTHORIZED";
-        } elseif ($this->status_code == 402) {
-            $this->status = "DENIED";
-        } elseif ($this->status_code == 400) {
-            $this->status = "ERROR";
-        } elseif ($this->status_code == 402) {
-            $this->status = "ERROR";
-        } elseif ($this->status_code == 500) {
-            $this->status = "ERROR";
+        if (201 == $this->status_code) {
+            $this->status = 'AUTHORIZED';
+        } elseif (202 == $this->status_code) {
+            $this->status = 'AUTHORIZED';
+        } elseif (402 == $this->status_code) {
+            $this->status = 'DENIED';
+        } elseif (400 == $this->status_code) {
+            $this->status = 'ERROR';
+        } elseif (402 == $this->status_code) {
+            $this->status = 'ERROR';
+        } elseif (500 == $this->status_code) {
+            $this->status = 'ERROR';
         } elseif (isset($this->redirect_url)) {
-            $this->status = "PENDING";
+            $this->status = 'PENDING';
         } elseif (isset($this->status_label)) {
             $this->status = $this->status_label;
         }
+
         return $this->status;
     }
 
@@ -295,6 +299,7 @@ class BaseResponse implements \JsonSerializable
 
     /**
      * @param $json
+     *
      * @return $this
      */
     public function mapperJson($json)

@@ -4,14 +4,13 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 01:46
+ * Time: 01:46.
  */
 
 namespace Getnet\API;
 
 /**
- * Class Card
- * @package Getnet\API
+ * Class Card.
  */
 class Card implements \JsonSerializable
 {
@@ -47,6 +46,7 @@ class Card implements \JsonSerializable
 
     /**
      * Card constructor.
+     *
      * @param Token $card
      */
     public function __construct(Token $card)
@@ -57,7 +57,6 @@ class Card implements \JsonSerializable
     /**
      * @return array
      */
-
     public function jsonSerialize()
     {
         $vars = get_object_vars($this);
@@ -78,11 +77,12 @@ class Card implements \JsonSerializable
 
     /**
      * @param mixed $security_code
+     *
      * @return Card
      */
     public function setSecurityCode($security_code)
     {
-        $this->security_code = (string)$security_code;
+        $this->security_code = (string) $security_code;
 
         return $this;
     }
@@ -97,11 +97,12 @@ class Card implements \JsonSerializable
 
     /**
      * @param mixed $brand
+     *
      * @return Card
      */
     public function setBrand($brand)
     {
-        $this->brand = (string)$brand;
+        $this->brand = (string) $brand;
 
         return $this;
     }
@@ -116,11 +117,12 @@ class Card implements \JsonSerializable
 
     /**
      * @param mixed $cardholder_name
+     *
      * @return Card
      */
     public function setCardholderName($cardholder_name)
     {
-        $this->cardholder_name = (string)$cardholder_name;
+        $this->cardholder_name = (string) $cardholder_name;
 
         return $this;
     }
@@ -135,11 +137,12 @@ class Card implements \JsonSerializable
 
     /**
      * @param mixed $expiration_month
+     *
      * @return Card
      */
     public function setExpirationMonth($expiration_month)
     {
-        $this->expiration_month = (string)$expiration_month;
+        $this->expiration_month = (string) $expiration_month;
 
         return $this;
     }
@@ -154,11 +157,12 @@ class Card implements \JsonSerializable
 
     /**
      * @param mixed $expiration_year
+     *
      * @return Card
      */
     public function setExpirationYear($expiration_year)
     {
-        $this->expiration_year = (string)$expiration_year;
+        $this->expiration_year = (string) $expiration_year;
 
         return $this;
     }
@@ -173,11 +177,12 @@ class Card implements \JsonSerializable
 
     /**
      * @param Token $token
+     *
      * @return $this
      */
     public function setNumberToken(Token $token)
     {
-        $this->number_token = (string)$token->getNumberToken();
+        $this->number_token = (string) $token->getNumberToken();
 
         return $this;
     }

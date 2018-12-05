@@ -4,25 +4,29 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 05:36
+ * Time: 05:36.
  */
 
 namespace Getnet\API;
 
 /**
- * Class Boleto
- * @package Getnet\API
+ * Class Boleto.
  */
 class Boleto implements \JsonSerializable
 {
     private $our_number;
+
     private $document_number;
+
     private $expiration_date;
+
     private $instructions;
+
     private $provider;
 
     /**
      * Boleto constructor.
+     *
      * @param $our_number
      */
     public function __construct($our_number)
@@ -48,6 +52,7 @@ class Boleto implements \JsonSerializable
 
     /**
      * @param mixed $our_number
+     *
      * @return Boleto
      */
     public function setOurNumber($our_number)
@@ -67,6 +72,7 @@ class Boleto implements \JsonSerializable
 
     /**
      * @param mixed $document_number
+     *
      * @return Boleto
      */
     public function setDocumentNumber($document_number)
@@ -86,6 +92,7 @@ class Boleto implements \JsonSerializable
 
     /**
      * @param mixed $expiration_date
+     *
      * @return Boleto
      */
     public function setExpirationDate($expiration_date)
@@ -105,6 +112,7 @@ class Boleto implements \JsonSerializable
 
     /**
      * @param mixed $instructions
+     *
      * @return Boleto
      */
     public function setInstructions($instructions)
@@ -124,6 +132,7 @@ class Boleto implements \JsonSerializable
 
     /**
      * @param mixed $provider
+     *
      * @return Boleto
      */
     public function setProvider($provider)

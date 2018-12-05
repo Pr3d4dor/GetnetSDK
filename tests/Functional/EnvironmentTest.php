@@ -8,7 +8,7 @@ use Getnet\API\Getnet;
 use PHPUnit\Framework\TestCase;
 
 /**
- * EnvironmentTest
+ * EnvironmentTest.
  *
  * @author Gianluca Bine <gian_bine@hotmail.com>
  */
@@ -21,7 +21,7 @@ class EnvironmentTest extends TestCase
         $availableEnvironments = [
             'SANDBOX',
             'PRODUCTION',
-            'HOMOLOG'
+            'HOMOLOG',
         ];
 
         foreach ($availableEnvironments as $availableEnvironment) {

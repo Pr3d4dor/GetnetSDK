@@ -12,7 +12,7 @@
 namespace Getnet\API\Exception;
 
 /**
- * InvalidCredentialsException
+ * InvalidCredentialsException.
  *
  * @author Gianluca Bine <gian_bine@hotmail.com>
  */

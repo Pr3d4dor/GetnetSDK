@@ -4,14 +4,13 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 20:29
+ * Time: 20:29.
  */
 
 namespace Getnet\API;
 
 /**
- * Class AuthorizeResponse
- * @package Getnet\API
+ * Class AuthorizeResponse.
  */
 class AuthorizeResponse extends BaseResponse
 {
@@ -66,7 +65,9 @@ class AuthorizeResponse extends BaseResponse
     protected $acquirer_transaction_id;
 
     protected $redirect_url;
+
     protected $issuer_payment_id;
+
     protected $payer_authentication_request;
 
     /**
@@ -127,6 +128,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $delayed
+     *
      * @return AuthorizeResponse
      */
     public function setDelayed($delayed)
@@ -146,6 +148,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $authorization_code
+     *
      * @return AuthorizeResponse
      */
     public function setAuthorizationCode($authorization_code)
@@ -165,6 +168,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $authorized_at
+     *
      * @return AuthorizeResponse
      */
     public function setAuthorizedAt($authorized_at)
@@ -184,6 +188,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $reason_code
+     *
      * @return AuthorizeResponse
      */
     public function setReasonCode($reason_code)
@@ -203,6 +208,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $reason_message
+     *
      * @return AuthorizeResponse
      */
     public function setReasonMessage($reason_message)
@@ -222,6 +228,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $acquirer
+     *
      * @return AuthorizeResponse
      */
     public function setAcquirer($acquirer)
@@ -241,6 +248,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $soft_descriptor
+     *
      * @return AuthorizeResponse
      */
     public function setSoftDescriptor($soft_descriptor)
@@ -260,6 +268,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $brand
+     *
      * @return AuthorizeResponse
      */
     public function setBrand($brand)
@@ -279,6 +288,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $terminal_nsu
+     *
      * @return AuthorizeResponse
      */
     public function setTerminalNsu($terminal_nsu)
@@ -298,6 +308,7 @@ class AuthorizeResponse extends BaseResponse
 
     /**
      * @param mixed $acquirer_transaction_id
+     *
      * @return AuthorizeResponse
      */
     public function setAcquirerTransactionId($acquirer_transaction_id)

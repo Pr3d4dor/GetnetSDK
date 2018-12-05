@@ -4,7 +4,7 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 05:23
+ * Time: 05:23.
  */
 
 namespace Getnet\API;
@@ -12,18 +12,20 @@ namespace Getnet\API;
 class Order implements \JsonSerializable
 {
     private $order_id;
+
     private $product_type;
+
     private $sales_tax;
 
     /**
      * Order constructor.
+     *
      * @param $order_id
      */
     public function __construct($order_id)
     {
         $this->order_id = $order_id;
     }
-
 
     public function jsonSerialize()
     {
@@ -40,6 +42,7 @@ class Order implements \JsonSerializable
 
     /**
      * @param mixed $order_id
+     *
      * @return Order
      */
     public function setOrderId($order_id)
@@ -59,6 +62,7 @@ class Order implements \JsonSerializable
 
     /**
      * @param mixed $product_type
+     *
      * @return Order
      */
     public function setProductType($product_type)
@@ -78,6 +82,7 @@ class Order implements \JsonSerializable
 
     /**
      * @param mixed $sales_tax
+     *
      * @return Order
      */
     public function setSalesTax($sales_tax)

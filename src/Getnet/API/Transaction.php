@@ -4,14 +4,13 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 01:39
+ * Time: 01:39.
  */
 
 namespace Getnet\API;
 
 /**
- * Class Transaction
- * @package Getnet\API
+ * Class Transaction.
  */
 class Transaction
 {
@@ -42,6 +41,7 @@ class Transaction
 
     /**
      * @param $brand
+     *
      * @return Credit
      */
     public function Credit($brand)
@@ -62,6 +62,7 @@ class Transaction
 
     /**
      * @param $brand
+     *
      * @return Credit
      */
     public function Debit($brand)
@@ -82,6 +83,7 @@ class Transaction
 
     /**
      * @param $id
+     *
      * @return Customer
      */
     public function Customer($id = null)
@@ -94,6 +96,7 @@ class Transaction
 
     /**
      * @param $id
+     *
      * @return Customer
      */
     public function Shippings($id)
@@ -107,6 +110,7 @@ class Transaction
 
     /**
      * @param $fingerprint
+     *
      * @return Device
      */
     public function Device($fingerprint)
@@ -119,6 +123,7 @@ class Transaction
 
     /**
      * @param $our_number
+     *
      * @return Boleto
      */
     public function Boleto($our_number)
@@ -148,6 +153,7 @@ class Transaction
     /**
      * @param $name
      * @param $value
+     *
      * @return $this
      */
     public function __set($name, $value)
@@ -271,6 +277,7 @@ class Transaction
 
     /**
      * @param $order_id
+     *
      * @return Order
      */
     public function Order($order_id)

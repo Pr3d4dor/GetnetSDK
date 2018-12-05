@@ -3,22 +3,23 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 05:29
+ * Time: 05:29.
  */
 
 namespace Getnet\API;
 
 /**
- * Class Device
- * @package Getnet\API
+ * Class Device.
  */
 class Device implements \JsonSerializable
 {
     private $device_id;
+
     private $ip_address;
 
     /**
      * Device constructor.
+     *
      * @param $device_id
      */
     public function __construct($device_id)
@@ -44,6 +45,7 @@ class Device implements \JsonSerializable
 
     /**
      * @param mixed $device_id
+     *
      * @return Device
      */
     public function setDeviceId($device_id)
@@ -63,6 +65,7 @@ class Device implements \JsonSerializable
 
     /**
      * @param mixed $ip_address
+     *
      * @return Device
      */
     public function setIpAddress($ip_address)

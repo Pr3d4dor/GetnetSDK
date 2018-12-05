@@ -3,14 +3,13 @@
  * Created by PhpStorm.
  * User: brunopaz
  * Date: 09/07/2018
- * Time: 14:03
+ * Time: 14:03.
  */
 
 namespace Getnet\API;
 
 /**
- * Class Token
- * @package Getnet\API
+ * Class Token.
  */
 class Token
 {
@@ -31,9 +30,11 @@ class Token
 
     /**
      * Token constructor.
+     *
      * @param $card_number
      * @param $customer_id
      * @param Getnet $credencial
+     *
      * @throws \Exception
      */
     public function __construct($card_number, $customer_id, Getnet $credencial)
@@ -63,11 +64,12 @@ class Token
 
     /**
      * @param mixed $card_number
+     *
      * @return Token
      */
     public function setCardNumber($card_number)
     {
-        $this->card_number = (string)$card_number;
+        $this->card_number = (string) $card_number;
 
         return $this;
     }
@@ -82,11 +84,12 @@ class Token
 
     /**
      * @param mixed $customer_id
+     *
      * @return Token
      */
     public function setCustomerId($customer_id)
     {
-        $this->customer_id = (string)$customer_id;
+        $this->customer_id = (string) $customer_id;
 
         return $this;
     }
@@ -101,16 +104,18 @@ class Token
 
     /**
      * @param Getnet $credencial
+     *
      * @return $this
+     *
      * @throws \Exception
      */
     public function setNumberToken(Getnet $credencial)
     {
-        $data = array("card_number" => $this->card_number, "customer_id" => $this->customer_id);
+        $data = array('card_number' => $this->card_number, 'customer_id' => $this->customer_id);
 
         $request = new Request($credencial);
-        $response = $request->post($credencial, "/v1/tokens/card", json_encode($data));
-        $this->number_token = $response["number_token"];
+        $response = $request->post($credencial, '/v1/tokens/card', json_encode($data));
+        $this->number_token = $response['number_token'];
 
         return $this;
     }
