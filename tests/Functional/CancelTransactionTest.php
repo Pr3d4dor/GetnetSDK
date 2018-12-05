@@ -12,9 +12,9 @@ class CancelTransactionTest extends BaseTestCase
     public function testCancelDelayedTransaction()
     {
         /** @var Transaction $transaction */
-        $transaction = $this->createCardTransaction('Credit', true);
+        $transaction = $this->createCardTransaction('credit', true);
 
-        $response = $this->getnet->Authorize($transaction);
+        $response = $this->getnet->authorize($transaction);
 
         $this->assertEquals('AUTHORIZED', $response->getStatus());
         $this->assertNotNull($response);
@@ -25,7 +25,7 @@ class CancelTransactionTest extends BaseTestCase
         $this->assertNotNull($paymentId);
         $this->assertNotEmpty($paymentId);
 
-        $capture = $this->getnet->AuthorizeCancel($paymentId, $amount);
+        $capture = $this->getnet->authorizeCancel($paymentId, $amount);
 
         $this->assertEquals('CANCELED', $capture->getStatus());
         $this->assertNotNull($capture);
@@ -36,9 +36,9 @@ class CancelTransactionTest extends BaseTestCase
      */
     public function testCancelTransaction()
     {
-        $transaction = $this->createCardTransaction('Credit');
+        $transaction = $this->createCardTransaction('credit');
 
-        $response = $this->getnet->Authorize($transaction);
+        $response = $this->getnet->authorize($transaction);
 
         $this->assertEquals('APPROVED', $response->getStatus());
         $this->assertNotNull($response);
@@ -49,7 +49,7 @@ class CancelTransactionTest extends BaseTestCase
         $this->assertNotNull($paymentId);
         $this->assertNotEmpty($paymentId);
 
-        $capture = $this->getnet->AuthorizeCancel($paymentId, $amount);
+        $capture = $this->getnet->authorizeCancel($paymentId, $amount);
 
         $this->assertEquals('CANCELED', $capture->getStatus());
         $this->assertNotNull($capture);

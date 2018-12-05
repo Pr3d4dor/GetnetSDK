@@ -14,7 +14,7 @@ class BoletoTransactionTest extends BaseTestCase
         /** @var Transaction $transaction */
         $transaction = $this->createBoletoTranscation();
 
-        $response = $this->getnet->Boleto($transaction);
+        $response = $this->getnet->boleto($transaction);
 
         $this->assertEquals('EM ABERTO', $response->getStatus());
         $this->assertNotNull($response);

@@ -1,87 +1,41 @@
 <?php
-
-/**
- * Created by PhpStorm.
- * User: brunopaz
- * Date: 09/07/2018
- * Time: 20:16
- */
-
 namespace Getnet\API;
 
 /**
  * Class BaseResponse
+ *
  * @package Getnet\API
  */
 class BaseResponse implements \JsonSerializable
 {
-    /**
-     * @var
-     */
     public $payment_id;
 
-    /**
-     * @var
-     */
     public $seller_id;
 
-    /**
-     * @var
-     */
     public $amount;
 
-    /**
-     * @var
-     */
     public $currency;
 
-    /**
-     * @var
-     */
     public $order_id;
 
-    /**
-     * @var
-     */
     public $status;
 
-    /**
-     * @var
-     */
     public $received_at;
 
-    /**
-     * @var
-     */
     public $error_message;
 
-    /**
-     * @var
-     */
     public $description;
 
-    /**
-     * @var
-     */
     public $description_detail;
 
-    /**
-     * @var
-     */
     public $status_code;
 
-    /**
-     * @var
-     */
     public $responseJSON;
 
-    /**
-     * @var
-     */
     public $status_label;
 
     /**
-     * @return array
+     * @return array|mixed
      */
     public function jsonSerialize()
     {
@@ -97,8 +51,8 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $error_message
-     * @return BaseResponse
+     * @param $error_message
+     * @return $this
      */
     public function setErrorMessage($error_message)
     {
@@ -116,8 +70,8 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $status_code
-     * @return BaseResponse
+     * @param $status_code
+     * @return $this
      */
     public function setStatusCode($status_code)
     {
@@ -135,8 +89,8 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $description_detail
-     * @return BaseResponse
+     * @param $description_detail
+     * @return $this
      */
     public function setDescriptionDetail($description_detail)
     {
@@ -146,16 +100,16 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @return mixed
+     * @return string
      */
     public function getErrorDescription()
     {
-        return $this->description . "\n";
+        return $this->description."\n";
     }
 
     /**
-     * @param mixed $description
-     * @return BaseResponse
+     * @param $description
+     * @return $this
      */
     public function setErrorDescription($description)
     {
@@ -173,11 +127,14 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $payment_id
+     * @param $payment_id
+     * @return $this
      */
     public function setPaymentId($payment_id)
     {
         $this->payment_id = $payment_id;
+
+        return $this;
     }
 
     /**
@@ -189,11 +146,14 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $seller_id
+     * @param $seller_id
+     * @return $this
      */
     public function setSellerId($seller_id)
     {
         $this->seller_id = $seller_id;
+
+        return $this;
     }
 
     /**
@@ -205,11 +165,14 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $amount
+     * @param $amount
+     * @return $this
      */
     public function setAmount($amount)
     {
         $this->amount = $amount;
+
+        return $this;
     }
 
     /**
@@ -221,11 +184,14 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $currency
+     * @param $currency
+     * @return $this
      */
     public function setCurrency($currency)
     {
         $this->currency = $currency;
+
+        return $this;
     }
 
     /**
@@ -237,11 +203,14 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $order_id
+     * @param $order_id
+     * @return $this
      */
     public function setOrderId($order_id)
     {
         $this->order_id = $order_id;
+
+        return $this;
     }
 
     /**
@@ -250,31 +219,35 @@ class BaseResponse implements \JsonSerializable
     public function getStatus()
     {
         if ($this->status_code == 201) {
-            $this->status = "AUTHORIZED";
+            $this->status = Transaction::STATUS_AUTHORIZED;
         } elseif ($this->status_code == 202) {
-            $this->status = "AUTHORIZED";
+            $this->status = Transaction::STATUS_AUTHORIZED;
         } elseif ($this->status_code == 402) {
-            $this->status = "DENIED";
+            $this->status = Transaction::STATUS_DENIED;
         } elseif ($this->status_code == 400) {
-            $this->status = "ERROR";
+            $this->status = Transaction::STATUS_ERROR;
         } elseif ($this->status_code == 402) {
-            $this->status = "ERROR";
+            $this->status = Transaction::STATUS_ERROR;
         } elseif ($this->status_code == 500) {
-            $this->status = "ERROR";
+            $this->status = Transaction::STATUS_ERROR;
         } elseif (isset($this->redirect_url)) {
-            $this->status = "PENDING";
+            $this->status = Transaction::STATUS_PENDING;
         } elseif (isset($this->status_label)) {
             $this->status = $this->status_label;
         }
+
         return $this->status;
     }
 
     /**
-     * @param mixed $status
+     * @param $status
+     * @return $this
      */
     public function setStatus($status)
     {
         $this->status = $status;
+
+        return $this;
     }
 
     /**
@@ -286,11 +259,14 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $received_at
+     * @param $received_at
+     * @return $this
      */
     public function setReceivedAt($received_at)
     {
         $this->received_at = $received_at;
+
+        return $this;
     }
 
     /**
@@ -319,10 +295,13 @@ class BaseResponse implements \JsonSerializable
     }
 
     /**
-     * @param mixed $array
+     * @param $array
+     * @return $this
      */
     public function setResponseJSON($array)
     {
         $this->responseJSON = json_encode($array, JSON_PRETTY_PRINT);
+
+        return $this;
     }
 }

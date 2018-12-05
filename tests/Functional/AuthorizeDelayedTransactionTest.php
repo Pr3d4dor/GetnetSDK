@@ -12,9 +12,9 @@ class AuthorizeDelayedTransactionTest extends BaseTestCase
     public function testAuthorizeDelayedTransaction()
     {
         /** @var Transaction $transaction */
-        $transaction = $this->createCardTransaction('Credit', true);
+        $transaction = $this->createCardTransaction('credit', true);
 
-        $response = $this->getnet->Authorize($transaction);
+        $response = $this->getnet->authorize($transaction);
 
         $this->assertEquals('AUTHORIZED', $response->getStatus());
         $this->assertNotNull($response);
@@ -24,7 +24,7 @@ class AuthorizeDelayedTransactionTest extends BaseTestCase
         $this->assertNotNull($paymentId);
         $this->assertNotEmpty($paymentId);
 
-        $capture = $this->getnet->AuthorizeConfirm($paymentId);
+        $capture = $this->getnet->authorizeConfirm($paymentId);
 
         $this->assertEquals('CONFIRMED', $capture->getStatus());
         $this->assertNotNull($capture);

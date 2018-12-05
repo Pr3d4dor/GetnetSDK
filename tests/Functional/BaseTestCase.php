@@ -2,7 +2,12 @@
 
 namespace Tests\Functional;
 
+use Getnet\API\Card;
+use Getnet\API\Credit;
+use Getnet\API\Customer;
+use Getnet\API\Environment;
 use Getnet\API\Getnet;
+use Getnet\API\Order;
 use Getnet\API\Token;
 use Getnet\API\Transaction;
 use PHPUnit\Framework\TestCase;
@@ -22,10 +27,13 @@ class BaseTestCase extends TestCase
      */
     protected function setUp()
     {
+        $environment = Environment::sandbox();
+
         $this->getnet = new Getnet(
             "c076e924-a3fe-492d-a41f-1f8de48fb4b1",
             "bc097a2f-28e0-43ce-be92-d846253ba748",
-            "SANDBOX"
+            $environment,
+            null
         );
     }
 
@@ -37,7 +45,7 @@ class BaseTestCase extends TestCase
         /** @var Transaction $transaction */
         $transaction = $this->createTransaction(false);
 
-        $transaction->Boleto("000001946598")
+        $transaction->boleto("000001946598")
             ->setDocumentNumber("170500000019763")
             ->setExpirationDate("21/11/2018")
             ->setProvider("santander")
@@ -63,8 +71,9 @@ class BaseTestCase extends TestCase
         /** @var Transaction $transaction */
         $transaction = $this->createTransaction();
 
-        $card = new Token("5155901222280001", "customer_210818263", $this->getnet);
-        $transaction->$type("")
+        // Gera token do cartão - Obrigatório
+        $tokenCard = new Token("5155901222280001", "customer_210818263", $this->getnet);
+        $transaction->$type()
             ->setAuthenticated(false)
             ->setDynamicMcc("1799")
             ->setSoftDescriptor("LOJA*TESTE*COMPRA-123")
@@ -72,15 +81,15 @@ class BaseTestCase extends TestCase
             ->setPreAuthorization($preAuthorization)
             ->setNumberInstallments($numberOfInstallments)
             ->setSaveCardData(false)
-            ->setTransactionType("FULL")
-            ->Card($card)
-            ->setBrand("MasterCard")
-            ->setExpirationMonth("12")
-            ->setExpirationYear("20")
-            ->setCardholderName("Bruno Paz")
-            ->setSecurityCode(123);
+            ->setTransactionType(Credit::TRANSACTION_TYPE_FULL)
+            ->card($tokenCard)
+                ->setBrand(Card::BRAND_MASTERCARD)
+                ->setExpirationMonth("12")
+                ->setExpirationYear("20")
+                ->setCardholderName("Jax Teller")
+                ->setSecurityCode("123");
 
-        $transaction->Device("hash-device-id")->setIpAddress("127.0.0.1");
+        $transaction->device("hash-device-id")->setIpAddress("127.0.0.1");
 
         return $transaction;
     }
@@ -94,45 +103,53 @@ class BaseTestCase extends TestCase
         $transaction = new Transaction();
         $transaction->setSellerId("1955a180-2fa5-4b65-8790-2ba4182a94cb");
         $transaction->setCurrency("BRL");
-        $transaction->setAmount("1000");
+        $transaction->setAmount(1000);
 
-        $transaction->Customer("customer_210818263")
-            ->setDocumentType("CPF")
+        // Detalhes do Pedido
+        $transaction->order("123456")
+            ->setProductType(Order::PRODUCT_TYPE_SERVICE)
+            ->setSalesTax(0);
+
+        // Dados pessoais do comprador
+        $transaction->customer("customer_210818263")
+            ->setDocumentType(Customer::DOCUMENT_TYPE_CPF)
             ->setEmail("customer@email.com.br")
-            ->setFirstName("Bruno")
-            ->setLastName("Paz")
-            ->setName("Bruno Paz")
+            ->setFirstName("Jax")
+            ->setLastName("Teller")
+            ->setName("Jax Teller")
             ->setPhoneNumber("5551999887766")
             ->setDocumentNumber("12345678912")
-            ->BillingAddress("90230060")
-            ->setCity("São Paulo")
-            ->setComplement("Sala 1")
-            ->setCountry("Brasil")
-            ->setDistrict("Centro")
-            ->setNumber("1000")
-            ->setPostalCode("90230060")
-            ->setState("SP")
-            ->setStreet("Av. Brasil");
-
-        if ($shipping) {
-            $transaction->Shippings("")
-                ->setEmail("customer@email.com.br")
-                ->setFirstName("João")
-                ->setName("João da Silva")
-                ->setPhoneNumber("5551999887766")
-                ->ShippingAddress("90230060")
-                ->setCity("Porto Alegre")
-                ->setComplement("Sala 1")
+            ->billingAddress()
+                ->setCity("São Paulo")
+                ->setComplement("Sons of Anarchy")
                 ->setCountry("Brasil")
-                ->setDistrict("São Geraldo")
+                ->setDistrict("Centro")
                 ->setNumber("1000")
                 ->setPostalCode("90230060")
-                ->setState("RS")
+                ->setState("SP")
                 ->setStreet("Av. Brasil");
+
+        if ($shipping) {
+            // Dados de entrega do pedido
+            $transaction->shipping()
+                ->setFirstName("Jax")
+                ->setEmail("customer@email.com.br")
+                ->setName("Jax Teller")
+                ->setPhoneNumber("5551999887766")
+                ->setShippingAmount(0)
+                ->address()
+                    ->setCity("Porto Alegre")
+                    ->setComplement("Sons of Anarchy")
+                    ->setCountry("Brasil")
+                    ->setDistrict("São Geraldo")
+                    ->setNumber("1000")
+                    ->setPostalCode("90230060")
+                    ->setState("RS")
+                    ->setStreet("Av. Brasil");
         }
 
-        $transaction->Order("123456")
-            ->setProductType("service")
+        $transaction->order("123456")
+            ->setProductType(Order::PRODUCT_TYPE_SERVICE)
             ->setSalesTax("0");
 
         return $transaction;

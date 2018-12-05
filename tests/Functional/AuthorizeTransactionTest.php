@@ -12,9 +12,9 @@ class AuthorizeTransactionTest extends BaseTestCase
     public function testAuthorizeTransaction()
     {
         /** @var Transaction $transaction */
-        $transaction = $this->createCardTransaction('Credit');
+        $transaction = $this->createCardTransaction('credit');
 
-        $response = $this->getnet->Authorize($transaction);
+        $response = $this->getnet->authorize($transaction);
 
         $this->assertEquals('APPROVED', $response->getStatus());
         $this->assertNotNull($response);

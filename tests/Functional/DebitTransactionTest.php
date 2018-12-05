@@ -14,9 +14,9 @@ class DebitTransactionTest extends BaseTestCase
      */
     public function testAuthorizeDebitTransaction()
     {
-        $transaction = $this->createCardTransaction('Debit', true);
+        $transaction = $this->createCardTransaction('debit', true);
 
-        $response = $this->getnet->Authorize($transaction);
+        $response = $this->getnet->authorize($transaction);
 
         $this->assertEquals('PENDING', $response->getStatus());
         $this->assertNotNull($response);
@@ -51,7 +51,7 @@ class DebitTransactionTest extends BaseTestCase
 
         $payerAuthenticationResponse = trim(str_replace(' escapeXml="false"/>', "", strip_tags($word[1])));
 
-        $capture = $this->getnet->AuthorizeConfirmDebit($paymentId, $payerAuthenticationResponse);
+        $capture = $this->getnet->authorizeConfirmDebit($paymentId, $payerAuthenticationResponse);
 
         $this->assertEquals('CONFIRMED', $capture->getStatus());
         $this->assertNotNull($capture);

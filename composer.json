@@ -2,12 +2,14 @@
   "name": "brunopazz/getnet-sdk",
   "description": "SDK da plataforma digital da GETNET",
   "minimum-stability": "stable",
+  "license": "MIT",
+  "type": "library",
   "require": {
     "php": ">=5.6.0"
   },
   "autoload": {
-    "psr-0": {
-      "Getnet": "src/"
+    "psr-4": {
+      "Getnet\\": "src//Getnet"
     }
   },
   "autoload-dev": {
@@ -15,11 +17,14 @@
       "Tests\\": "tests"
     }
   },
-  "license": "MIT",
   "authors": [
     {
       "name": "Bruno Paz",
       "email": "brunopaz@azpay.com.br"
+    },
+    {
+      "name": "Edson Nascimento",
+      "email": "edson27bn@gmail.com"
     }
   ],
   "scripts": {
