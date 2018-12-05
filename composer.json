@@ -1,5 +1,5 @@
 {
-  "name": "brunopazz/getnet-sdk",
+  "name": "Pr3d4dor/GetnetSDK",
   "description": "SDK da plataforma digital da GETNET",
   "minimum-stability": "stable",
   "license": "MIT",
@@ -25,6 +25,10 @@
     {
       "name": "Edson Nascimento",
       "email": "edson27bn@gmail.com"
+    },
+    {
+      "name": "Gianluca Bine",
+      "email": "gian_bine@hotmail.com"
     }
   ],
   "scripts": {
